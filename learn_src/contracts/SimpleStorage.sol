@@ -7,11 +7,13 @@ contract SimpleStorage {
 
     // You need to send a transaction to write to a state variable.
     function set(uint _num) public {
-        num = _num;
+        // write logic to set the state variable
+        
     }
 
     // You can read from a state variable without sending a transaction.
     function get() public view returns (uint) {
-        return num;
+        // write logic to get the state variable    
+        
     }
 }
