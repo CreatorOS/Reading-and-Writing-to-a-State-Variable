@@ -22,7 +22,7 @@ Let's write a function to read the state variable `num`.
 ```
 
 Hit `Run`. You will see that the balance of the account before the call and after the call is the same.
-Hence, no transaction fees are paid for reading a state variable.
+Hence, no transaction fees are paid for reading a state variable. You tell the compiler that this function doesn't modify the state variables by using the modifier "view" to the signature of the function.
 
 ## Writing a state variable
 
@@ -34,5 +34,5 @@ Let's write a function to update a state variable `num`.
     }
 ```
 
-Hit `Run`. You will see that the balance of the account after the call is slightly less than before the call.
-Hence, a transaction fee is paid for writing a state variable.
+Hit `Run`. You will see that the balance of the account after the call is slightly less than before the call in the output logs. 
+Hence, a transaction fee is paid for writing a state variable. Since this function is changing the state variable `num` , it can't have the modifier `view`. So whenever we call this function, we must pay some eth!
