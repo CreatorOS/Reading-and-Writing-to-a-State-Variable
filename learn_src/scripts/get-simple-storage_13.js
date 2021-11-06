@@ -15,16 +15,21 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
+  const [deployer] = await ethers.getSigners();
   const ContractFactory = await hre.ethers.getContractFactory('SimpleStorage');
   const contract = await ContractFactory.deploy();
 
   await contract.deployed();
   console.log('SimpleStorage Contract deployed to:', contract.address);
   try {
+    let balBefore = new BN((await deployer.getBalance()).toString());
+    console.log(`Balance before the call: ${balBefore.toString()}`);
     console.log(`Calling get()`);
     let num = await contract.get();
+    let balAfter = new BN((await deployer.getBalance()).toString());
+    console.log(`Balance after the call: ${balAfter.toString()}`);
     console.log('get() output: ', num.toString());
-    if(num.toString() === '0') {
+    if (num.toString() === '0' && balAfter.eq(balBefore)) {
       console.log('Test Passed!');
       process.exit(0);
     } else {
