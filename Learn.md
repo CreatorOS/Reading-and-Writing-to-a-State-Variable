@@ -34,5 +34,5 @@ Let's write a function to update a state variable `num`.
     }
 ```
 
-Now go on and call this with un unsigned int parameter, you will see that the balance of the account after the call is slightly less than before the call in the output logs. 
+Now go on and call this with an unsigned int parameter, you will see that the balance of the account after the call is slightly less than before the call in the output logs. 
 Hence, a transaction fee is paid for writing a state variable. Since this function is changing the state variable `num` , it can't have the modifier `view`. So whenever we call this function, we must pay some eth!
